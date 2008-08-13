@@ -32,7 +32,7 @@
 
 class Object #:nodoc:
   def meta_def(m,&b) #:nodoc:
-    (class<<self;self end).send(:define_method,m,&b)
+    extend(Module.new{define_method(m,&b)})
   end
 end
 

@@ -1,5 +1,5 @@
 %w[tempfile uri stringio rack].map{|l|require l};class Object;def meta_def m,&b
-(class<<self;self end).send:define_method,m,&b end end;module Camping;C=self
+extend Module.new{define_method m,&b} end end;module Camping;C=self
 S=IO.read(__FILE__)rescue nil;P="<h1>Cam\ping Problem!</h1><h2>%s</h2>"
 class H<Hash
 def method_missing m,*a;m.to_s=~/=$/?self[$`]=a[0]:a==[]?self[m.to_s]:super end
